@@ -37,9 +37,14 @@ draw = function() {
             var y = l * bSize;
             fill(c1[i][l], c2[i][l], c3[i][l]);
             noStroke();
-            rect(x, y, bSize, bSize);
-            triangle(x + bSize, y, x + bSize * 1.5, y + bSize * 0.5, x + bSize, y + bSize);
-            triangle(x, y, x + bSize * 1.54, y - bSize * 0.5, x + bSize, y);
+            beginShape();
+            vertex(x + bSize / 2, y + bSize / 2);
+            vertex(x, y + bSize);
+            vertex(x + bSize * 1.515, y - bSize * -0.5);
+            vertex(x + bSize, y);
+            vertex(x + bSize * 1.51, y - bSize * 0.5);
+            vertex(x, y);
+            endShape(CLOSE);
             xPos[i]+= 0.1;
             if (xPos[i] >= /*1102*/bSize * (reps + 1) + start) {
                 xPos[i] = start;

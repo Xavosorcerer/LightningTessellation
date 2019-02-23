@@ -1,9 +1,9 @@
 var bSize = 56;
 var bLeng = bSize * 1.5;
-var xPos = [];
 var reps = 20; //horizontal repititions
 var leng = ceil(400 / bSize); // vertical repititions
-var start = -bLeng +10;
+var start = -bLeng -10;
+var xPos = new Array(reps);
 var c1 = new Array(reps);
 var c2 = new Array(reps);
 var c3 = new Array(reps);
@@ -13,11 +13,12 @@ for (var t = 0; t < reps + 1; t++) {
     c2[t] = new Array(leng);
     c3[t] = new Array(leng);
 }
-
+//IDOIFJIUFHERIFUJ THE PUSH X DOESNT ACCOUNT FOR THE START POSITION OHHHHHHH
 //color and position for each individual line
 for (var d = 0; d < reps; d++) {
-    var t = d * bSize;
-    xPos.push(t);
+    var t = (d * bSize) + start;
+    xPos[d] = t;
+    //xPos.push(t);
     //color for each shape
     for (var c = 0; c <= leng; c++) {
         c1[d][c] = random(0, 255);
@@ -28,7 +29,7 @@ for (var d = 0; d < reps; d++) {
 
 
 draw = function() {
-    //background(255, 255, 255);
+    background(255, 255, 255);
     //for the lines
     for (var i = reps; i >= 0; i-= 1) {
         //for the individual blocks
@@ -46,7 +47,7 @@ draw = function() {
             vertex(x, y);
             endShape(CLOSE);
             xPos[i]+= 0.1;
-            if (xPos[i] >= /*1102*/bSize * (reps + 1) + start) {
+            if (xPos[i] >= bSize * (reps) + start) { //1102
                 xPos[i] = start;
             }
         }
